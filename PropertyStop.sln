@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyStop", "PropertyStop\PropertyStop.csproj", "{31A0E08C-5624-4A85-A70C-DB276B36C48C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertyStop_UI", "PropertyStop_UI\PropertyStop_UI.csproj", "{25FFAA22-AEAE-4AAA-B867-8F0FE9276320}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31A0E08C-5624-4A85-A70C-DB276B36C48C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31A0E08C-5624-4A85-A70C-DB276B36C48C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31A0E08C-5624-4A85-A70C-DB276B36C48C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31A0E08C-5624-4A85-A70C-DB276B36C48C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25FFAA22-AEAE-4AAA-B867-8F0FE9276320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25FFAA22-AEAE-4AAA-B867-8F0FE9276320}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25FFAA22-AEAE-4AAA-B867-8F0FE9276320}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25FFAA22-AEAE-4AAA-B867-8F0FE9276320}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBEC7F94-9342-4D9F-BA3F-26917B454664}
+	EndGlobalSection
+EndGlobal
