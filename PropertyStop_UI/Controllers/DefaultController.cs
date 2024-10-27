@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PropertyStop_UI.Dtos.ProductDtos;
 
 namespace PropertyStop_UI.Controllers
 {
@@ -6,7 +7,8 @@ namespace PropertyStop_UI.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            List<ResultProductDtos> products = new List<ResultProductDtos>();
+            return View(products);
         }
     }
 }
