@@ -6,7 +6,6 @@ namespace PropertyStop_UI.ViewComponents.HomePage
 {
     public class _DefaultBottomGridComponentPartial : ViewComponent
     {
-
         private readonly IHttpClientFactory _httpClientFactory;
 
         public _DefaultBottomGridComponentPartial(IHttpClientFactory httpClientFactory)
