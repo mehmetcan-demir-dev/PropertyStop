@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PropertyStop.Models.DapperContext;
+using PropertyStop.Repositories.BottomGridRepositories;
 using PropertyStop.Repositories.CategoryRepository;
 using PropertyStop.Repositories.ProductRepository;
+using PropertyStop.Repositories.ServiceRepository;
 using PropertyStop.Repositories.WhoWeAreRepository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,8 @@ builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 
 builder.Services.AddTransient<IWhoWeAreDetailRepository, WhoWeAreDetailRepository>();
+builder.Services.AddTransient<IServiceRepository, ServiceRepository>();
+builder.Services.AddTransient<IBottomGridRepository, BottomGridRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
