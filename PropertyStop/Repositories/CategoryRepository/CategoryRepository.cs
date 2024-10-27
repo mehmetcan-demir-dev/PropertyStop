@@ -72,9 +72,6 @@ namespace PropertyStop.Repositories.CategoryRepository
                 await connection.ExecuteAsync(query, parameters);
             }
         }
-        Task<List<ResultCategoryDto>> ICategoryRepository.GetAllCategoryAsync()
-        {
-            throw new System.NotImplementedException();
-        }
+        
     }
 }

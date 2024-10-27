@@ -11,7 +11,7 @@ namespace PropertyStop_UI.ViewComponents.HomePage
         public _DefaultHomePageProductList(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-        }
+        }   
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
