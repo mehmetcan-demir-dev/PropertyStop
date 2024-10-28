@@ -1,5 +1,4 @@
 ﻿using PropertyStop.Dtos.BottomGridDtos;
-using PropertyStop.Dtos.ServiceDtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
