@@ -1,10 +1,12 @@
 ﻿@model List<ResultTestimonialDto>
+
 <section class="w3l-index3" id="about">
     <div class="midd-w3 py-5">
         <div class="container pb-lg-5 pb-md-4 pb-2">
             <div class="row">
                 <div class="col-lg-5 pr-lg-0">
                     <div class="w3l-left-img1">
+                        <!-- Buraya görsel veya resim koyabilirsiniz -->
                     </div>
                 </div>
                 <div class="col-lg-7 pl-lg-0">
@@ -19,11 +21,14 @@
                                 <p>Toplam Müşterimiz</p>
                             </div>
                         </div>
-                        <div class="w3l-clients" id="testimonials">
-                            <div id="owl-demo1" class="owl-carousel owl-theme mt-4 pt-2 mb-4">
-                                @foreach (var item in Model)
+
+                        <!-- Bootstrap Carousel Başlangıcı -->
+                        <div id="testimonialCarousel" class="carousel slide mt-4 pt-2 mb-4" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < Model.Count; i++)
                                 {
-                                    <div class="item">
+                                    var item = Model[i];
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
                                         <div class="testimonial-content">
                                             <div class="testimonial">
                                                 <div class="testi-des">
@@ -33,16 +38,14 @@
                                                     </div>
                                                 </div>
                                                 <blockquote>
-                                                    <q>
-                                                        @item.Comment
-                                                    </q>
+                                                    <q>@item.Comment</q>
                                                 </blockquote>
                                             </div>
                                         </div>
                                     </div>
                                 }
                             </div>
-                        </div> 
+                        </div>
                         <a href="#agents" class="btn btn-style btn-primary mt-5">Acentamızla İletişime Geçin</a>
                     </div>
                 </div>
