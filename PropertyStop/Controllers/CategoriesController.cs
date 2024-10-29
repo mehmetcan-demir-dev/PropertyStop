@@ -29,7 +29,7 @@ namespace PropertyStop.Controllers
             _categoryRepository.CreateCategory(createCategoryDto);
             return Ok("Kategori Ekleme Başarıyla Tamamlandı.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             _categoryRepository.DeleteCategory(id);
