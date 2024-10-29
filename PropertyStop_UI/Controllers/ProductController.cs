@@ -2,18 +2,18 @@
 using Newtonsoft.Json;
 using PropertyStop_UI.Dtos.ProductDtos;
 
-namespace PropertyStop_UI.ViewComponents.HomePage
+namespace PropertyStop_UI.Controllers
 {
-    public class _DefaultHomePageProductList:ViewComponent
+    public class ProductController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _DefaultHomePageProductList(IHttpClientFactory httpClientFactory)
+        public ProductController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
-        }   
+        }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44324/api/ProductControllers/ProductListWithCategory");
@@ -23,6 +23,11 @@ namespace PropertyStop_UI.ViewComponents.HomePage
                 var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
                 return View(values);
             }
+            return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> CreateProduct()
+        {
             return View();
         }
     }

@@ -7,7 +7,7 @@ namespace PropertyStop_UI.Controllers
     {
         public IActionResult Index()
         {
-            List<ResultProductDtos> products = new List<ResultProductDtos>();
+            List<ResultProductDto> products = new List<ResultProductDto>();
             return View(products);
         }
     }
