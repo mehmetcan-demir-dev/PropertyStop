@@ -23,7 +23,7 @@ namespace PropertyStop.Repositories.EmployeeRepositories
             parameters.Add("@Title", createEmployeeDto.Title);
             parameters.Add("@Mail", createEmployeeDto.Mail);
             parameters.Add("@PhoneNumber", createEmployeeDto.PhoneNumber);
-            parameters.Add("@ImageUrl", createEmployeeDto.ImageUrl);
+            parameters.Add("@imageUrl", createEmployeeDto.ImageUrl);
             parameters.Add("@status", true);
             using (var connection = _context.CreateConnection())
             {
@@ -73,7 +73,7 @@ namespace PropertyStop.Repositories.EmployeeRepositories
             parameters.Add("@Title", updateEmployeeDto.Title);
             parameters.Add("@Mail", updateEmployeeDto.Mail);
             parameters.Add("@PhoneNumber", updateEmployeeDto.PhoneNumber);
-            parameters.Add("@ImageUrl", updateEmployeeDto.ImageUrl);
+            parameters.Add("@imageUrl", updateEmployeeDto.ImageUrl);
             parameters.Add("@status", true);
             parameters.Add("@employeeID", updateEmployeeDto.EmployeeID);
             using (var connection = _context.CreateConnection())
