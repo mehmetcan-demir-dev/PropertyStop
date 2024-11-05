@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using PropertyStop_UI.Dtos.ServiceDtos;
 using PropertyStop_UI.Dtos.WhoWeAreDtos;
 
 namespace PropertyStop_UI.ViewComponents.HomePage

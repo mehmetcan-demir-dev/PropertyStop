@@ -31,7 +31,7 @@ namespace PropertyStop.Controllers
             _whoWeAreDetailRepository.CreateWhoWeAreDetail(createWhoWeAreDetailDto);
             return  Ok("Bilgi Ekleme Başarıyla Tamamlandı.");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {   
             _whoWeAreDetailRepository.DeleteWhoWeAreDetail(id);
