@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Admin/Index.cshtml";
+    int count = 0;
 }
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
@@ -29,8 +30,9 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
+                                count++;
                                 <tr>
-                                    <th scope="row">@item.productID</th>
+                                    <th scope="row">@count</th>
                                     <td>@item.title</td>
                                     <td>@item.city</td>
                                     <td>@item.district</td>
@@ -43,15 +45,15 @@
                                     <td>
                                         @if (item.DealOfTheDay)
                                         {
-                                            <a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-warning">Pasifleştir</a>
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.productID" class="btn btn-outline-warning" onclick="return confirm('Günün fırsatlarından çıkarmak istediğinize emin misiniz?\nUnutmayın, fırsat sayısı üçün katı olmak zorunda')">Pasifleştir</a>
                                         }
                                         else
                                         {
-                                            <a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-success">Aktifleştir</a>
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.productID" class="btn btn-outline-success" onclick="return confirm('Günün fırsatlarına eklemek istediğinize emin misiniz?\nUnutmayın, fırsat sayısı üçün katı olmak zorunda')">Aktifleştir</a>
                                         }
                                     </td>
                                 </tr>
-                            } 
+                            }
                         </tbody>
                     </table>
                     <a href="/Product/CreateProduct" class="btn btn-outline-info">İlan Girişi</a>
