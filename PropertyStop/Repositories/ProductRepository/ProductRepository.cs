@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.CodeAnalysis;
 using PropertyStop.Dtos.ProductDtos;
 using PropertyStop.Models.DapperContext;
 using System.Collections.Generic;
@@ -31,6 +32,28 @@ namespace PropertyStop.Repositories.ProductRepository
             {
                 var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
                 return values.ToList();
+            }
+        }
+
+        public async void ProductDealOfTheDayStatusChangeToFalse(int id)
+        {
+            string query = "update Product set DealOfTheDay=0 where ProductID=@productId";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productId", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
+        public async void ProductDealOfTheDayStatusChangeToTrue(int id)
+        {
+            string query = "update Product set DealOfTheDay=1 where ProductID=@productId";
+            var parameters = new DynamicParameters();
+            parameters.Add("@productId",id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
             }
         }
     }
