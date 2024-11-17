@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PropertyStop.Dtos.BottomGridDtos;
 using PropertyStop.Repositories.BottomGridRepositories;
 using System.Threading.Tasks;
 
@@ -20,6 +21,30 @@ namespace PropertyStop.Controllers
         {
             var values = await _bottomGridRepository.GetAllBottomGridAsync();
             return Ok(values);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
+        {
+            _bottomGridRepository.CreateBottomGrid(createBottomGridDto);
+            return Ok("Bilgi Ekleme Başarıyla Tamamlandı.");
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBottomGrid(int id)
+        {
+            _bottomGridRepository.DeleteBottomGrid(id);
+            return Ok("Bilgi Silme Başarıyla Tamamlandı.");
+        }
+        [HttpPut]
+        public async Task<IActionResult> UpdateBottomGrid(UpdateBottomGridDto updateBottomGridDto)
+        {
+            _bottomGridRepository.UpdateBottomGrid(updateBottomGridDto);
+            return Ok("Bilgi Güncelleme Başarıyla Tamamlandı");
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBottomGrid(int id)
+        {
+            var value = await _bottomGridRepository.GetBottomGrid(id);
+            return Ok(value);
         }
     }
 }
