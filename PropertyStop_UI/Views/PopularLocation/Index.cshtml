@@ -4,9 +4,11 @@
     Layout = "~/Views/Admin/Index.cshtml";
     int count = 0;
 }
-
-<h1>Index</h1>
-
+<style>
+    img {
+        border-radius: 50%;
+    }
+</style>
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-12">
@@ -28,15 +30,15 @@
                                 count++;
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td><img src="@item.ImageUrl"/>@item.CityName</td>
-                                    <td><a href="/PopularLocation/DeletePopularLocation/@item.LocationID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><img src="@item.ImageUrl" height="50" width="50" /> @item.CityName</td>
+                                    <td><a href="/PopularLocation/DeletePopularLocation/@item.LocationID" class="btn btn-outline-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
                                     <td><a href="/PopularLocation/UpdatePopularLocation/@item.LocationID" class="btn btn-outline-success">Güncelle</a></td>
                                 </tr>
                             }
 
                         </tbody>
                     </table>
-                    <a href="/PopularLocation/CreatePopularLocation" class="btn btn-outline-info">Yeni Hizmet Girişi</a>
+                    <a href="/PopularLocation/CreatePopularLocation" class="btn btn-outline-info">Yeni Ekle</a>
                 </div>
             </div>
         </div>
