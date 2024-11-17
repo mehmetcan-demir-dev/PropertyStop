@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using PropertyStop.Dtos.PopularLocationDtos;
+using PropertyStop.Dtos.ServiceDtos;
 using PropertyStop.Models.DapperContext;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,30 @@ namespace PropertyStop.Repositories.PopularLocationRepositories
         {
             _context = context;
         }
+
+        public async void CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
+        {
+            string query = "insert into PopularLocation (CityName, ImageUrl) values (@cityName, @imageUrl)";
+            var parameters = new DynamicParameters();
+            parameters.Add("@cityName", createPopularLocationDto.CityName);
+            parameters.Add("@imageUrl", createPopularLocationDto.ImageUrl);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
+        public async void DeletePopularLocation(int id)
+        {
+            string query = "delete from PopularLocation where LocationID = @locationID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@locationID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
+            }
+        }
+
         public async Task<List<ResultPopularLocationDto>> GetAllPopularLocationAsync()
         {
             string query = "Select * from PopularLocation";
@@ -21,6 +46,31 @@ namespace PropertyStop.Repositories.PopularLocationRepositories
             {
                 var values = await connection.QueryAsync<ResultPopularLocationDto>(query);
                 return values.ToList();
+            }
+        }
+
+        public async Task<GetByIDPopularLocationDto> GetPopularLocation(int id)
+        {
+            string query = "select * from PopularLocation where LocationID = @locationID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@locationID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIDPopularLocationDto>(query, parameters);
+                return values;
+            }
+        }
+
+        public async void UpdatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto)
+        {
+            string query = "Update PopularLocation set CityName = @cityName, ImageUrl= @imageUrl where LocationID=@locationID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@cityName", updatePopularLocationDto.CityName);
+            parameters.Add("@imageUrl", updatePopularLocationDto.ImageUrl);
+            parameters.Add("@locationID", updatePopularLocationDto.LocationID);
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
             }
         }
     }
