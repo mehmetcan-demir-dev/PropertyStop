@@ -13,6 +13,7 @@ namespace PropertyStop.Repositories.ProductRepository
         void ProductDealOfTheDayStatusChangeToTrue(int id);
 
         void ProductDealOfTheDayStatusChangeToFalse(int id);
-        Task<List<ResultProductDto>> GetLast5ProductAsync();
+
+        Task<List<ResultLast5ProductsWithCategory>> GetLast5ProductAsync();
     }
 }

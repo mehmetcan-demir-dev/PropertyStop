@@ -35,12 +35,12 @@ namespace PropertyStop.Repositories.ProductRepository
             }
         }
 
-        public async Task<List<ResultProductDto>> GetLast5ProductAsync()
+        public async Task<List<ResultLast5ProductsWithCategory>> GetLast5ProductAsync()
         {
-            string query = "select Top(5) * from Product where type='Kiralık' order by ProductID desc";
-            using ( var connection = _context.CreateConnection())
+            string query = "select Top(5) ProductID,Title,Price,City,District,ProductCategory,CategoryName,ProductDate from Product inner join Category On Product.ProductCategory=Category.CategoryID where type='Kiralık' order by ProductID desc";
+            using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<ResultProductDto>(query);
+                var values = await connection.QueryAsync<ResultLast5ProductsWithCategory>(query);
                 return values.ToList();
             }
         }
@@ -60,7 +60,7 @@ namespace PropertyStop.Repositories.ProductRepository
         {
             string query = "update Product set DealOfTheDay=1 where ProductID=@productId";
             var parameters = new DynamicParameters();
-            parameters.Add("@productId",id);
+            parameters.Add("@productId", id);
             using (var connection = _context.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);

@@ -4,12 +4,14 @@ using Microsoft.Extensions.Hosting;
 using PropertyStop.Models.DapperContext;
 using PropertyStop.Repositories.BottomGridRepositories;
 using PropertyStop.Repositories.CategoryRepository;
+using PropertyStop.Repositories.ContactRepositories;
 using PropertyStop.Repositories.EmployeeRepositories;
 using PropertyStop.Repositories.PopularLocationRepositories;
 using PropertyStop.Repositories.ProductRepository;
 using PropertyStop.Repositories.ServiceRepository;
 using PropertyStop.Repositories.StatisticsRepositories;
 using PropertyStop.Repositories.TestimonialRepositories;
+using PropertyStop.Repositories.ToDoListRepositories;
 using PropertyStop.Repositories.WhoWeAreRepository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,8 @@ builder.Services.AddTransient<IPopularLocationRepository, PopularLocationReposit
 builder.Services.AddTransient<IStatisticsRepository, StatisticsRepository>();
 builder.Services.AddTransient<ITestimonialRepository, TestimonialRepository>();
 builder.Services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddTransient<IContactRepository, ContactRepository>();
+builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
