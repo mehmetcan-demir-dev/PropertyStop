@@ -35,6 +35,16 @@ namespace PropertyStop.Repositories.ProductRepository
             }
         }
 
+        public async Task<List<ResultProductDto>> GetLast5ProductAsync()
+        {
+            string query = "select Top(5) * from Product where type='Kiralık' order by ProductID desc";
+            using ( var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductDto>(query);
+                return values.ToList();
+            }
+        }
+
         public async void ProductDealOfTheDayStatusChangeToFalse(int id)
         {
             string query = "update Product set DealOfTheDay=0 where ProductID=@productId";

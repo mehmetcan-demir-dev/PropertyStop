@@ -29,16 +29,22 @@ namespace PropertyStop.Controllers
             return Ok(values);
         }
         [HttpGet("ProductDealOfTheDayStatusChangeToTrue/{id}")]
-        public  async Task<IActionResult> ProductDealOfTheDayStatusChangeToTrue(int id)
+        public async Task<IActionResult> ProductDealOfTheDayStatusChangeToTrue(int id)
         {
             _productRepository.ProductDealOfTheDayStatusChangeToTrue(id);
             return Ok("Aktifleştirildi.");
         }
         [HttpGet("ProductDealOfTheDayStatusChangeToFalse/{id}")]
-        public  async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
+        public async Task<IActionResult> ProductDealOfTheDayStatusChangeToFalse(int id)
         {
             _productRepository.ProductDealOfTheDayStatusChangeToFalse(id);
             return Ok("Pasifleştirildi.");
+        }
+        [HttpGet("Last5ProductList")]
+        public async Task<IActionResult> Last5ProductList()
+        {
+            var values = await _productRepository.GetLast5ProductAsync();
+            return Ok(values);
         }
     }
 }
