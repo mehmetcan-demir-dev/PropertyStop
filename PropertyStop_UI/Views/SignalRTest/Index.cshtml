@@ -4,7 +4,6 @@
 }
 
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
-<a href="~/lib/microsoft/signalr/dist/browser/signalr.min.js.map">~/lib/microsoft/signalr/dist/browser/signalr.min.js.map</a>
 
 
 @section Scripts
@@ -21,8 +20,16 @@
 
                                 connection.start().then(() => {
                                     $("#connstatus").text(connection.state);
+                                    connection.invoke("SendCategoryCount");
                                 }).catch((err) => { console.log(err) });
-                            })
+
+
+
+                                connection.on("ReceiveCategoryCount", (value1) => {
+                                    $("#categorycount").text(value1);
+                                })
+                            });
+
                         </script>
                     </div>
                 </div>
@@ -34,5 +41,9 @@
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="alert alert-warning">Bağlantı Durumu : <strong id="connstatus"></strong></div>
+    </div>
+
+    <div class="col-md-8 offset-2">
+        <div class="alert alert-warning">Kategori Sayısı : <strong id="categorycount"></strong></div>
     </div>
 </div>
