@@ -45,6 +45,18 @@ namespace PropertyStop.Repositories.ProductRepository
             }
         }
 
+        public async Task<List<ResultProductListingWithCategoryByEmployeeDto>> GetProductListingByEmployeeAsync(int id)
+        {
+            string query = "Select ProductID, Title, Price, City, District, CategoryName,CoverImage,Type,Address, DealOfTheDay from Product inner join Category on Product.ProductCategory=Category.CategoryID where EmployeeID=@employeeID";
+            var parameters = new DynamicParameters();
+            parameters.Add("@employeeID", id);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductListingWithCategoryByEmployeeDto>(query, parameters);
+                return values.ToList();
+            }
+        }
+
         public async void ProductDealOfTheDayStatusChangeToFalse(int id)
         {
             string query = "update Product set DealOfTheDay=0 where ProductID=@productId";

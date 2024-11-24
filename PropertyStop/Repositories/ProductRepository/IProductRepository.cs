@@ -8,6 +8,8 @@ namespace PropertyStop.Repositories.ProductRepository
     {
         Task<List<ResultProductDto>> GetAllProductAsync();
 
+        Task<List<ResultProductListingWithCategoryByEmployeeDto>> GetProductListingByEmployeeAsync(int id);
+
         Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync();
 
         void ProductDealOfTheDayStatusChangeToTrue(int id);

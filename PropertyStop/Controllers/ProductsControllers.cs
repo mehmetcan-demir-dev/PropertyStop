@@ -7,11 +7,11 @@ namespace PropertyStop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductControllers : ControllerBase
+    public class ProductsControllers : ControllerBase
     {
         private readonly IProductRepository _productRepository;
 
-        public ProductControllers(IProductRepository productRepository)
+        public ProductsControllers(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
@@ -44,6 +44,12 @@ namespace PropertyStop.Controllers
         public async Task<IActionResult> Last5ProductList()
         {
             var values = await _productRepository.GetLast5ProductAsync();
+            return Ok(values);
+        }
+        [HttpGet("ProductListingsByEmployee")]
+        public async Task<IActionResult> ProductListingsByEmployee(int id)
+        {
+            var values = await _productRepository.GetProductListingByEmployeeAsync(id);
             return Ok(values);
         }
     }
