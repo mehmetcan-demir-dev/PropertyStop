@@ -33,23 +33,23 @@
                                 count++;
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td>@item.title</td>
-                                    <td>@item.city</td>
-                                    <td>@item.district</td>
-                                    <td>@item.categoryName</td>
-                                    <td>@item.type</td>
-                                    <td>@item.price</td>
-                                    <td><a href="/Product/DeleteProduct/@item.productID" class="btn btn-outline-danger">Sil</a></td>
-                                    <td><a href="/Product/UpdateProduct/@item.productID" class="btn btn-outline-info">Güncelle</a></td>
-                                    <td><a href="/Product/ProductDetail/@item.productID" class="btn btn-outline-primary">Gör</a></td>
+                                    <td>@item.Title</td>
+                                    <td>@item.City</td>
+                                    <td>@item.District</td>
+                                    <td>@item.CategoryName</td>
+                                    <td>@item.Type</td>
+                                    <td>@item.Price</td>
+                                    <td><a href="/Product/DeleteProduct/@item.ProductID" class="btn btn-outline-danger">Sil</a></td>
+                                    <td><a href="/Product/UpdateProduct/@item.ProductID" class="btn btn-outline-info">Güncelle</a></td>
+                                    <td><a href="/Product/ProductDetail/@item.ProductID" class="btn btn-outline-primary">Gör</a></td>
                                     <td>
                                         @if (item.DealOfTheDay)
                                         {
-                                            <a href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.productID" class="btn btn-outline-warning" onclick="return confirm('Günün fırsatlarından çıkarmak istediğinize emin misiniz?\nUnutmayın, fırsat sayısı üçün katı olmak zorunda')">Pasifleştir</a>
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.ProductID" class="btn btn-outline-warning" onclick="return confirm('Günün fırsatlarından çıkarmak istediğinize emin misiniz?\nUnutmayın, fırsat sayısı üçün katı olmak zorunda')">Pasifleştir</a>
                                         }
                                         else
                                         {
-                                            <a href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.productID" class="btn btn-outline-success" onclick="return confirm('Günün fırsatlarına eklemek istediğinize emin misiniz?\nUnutmayın, fırsat sayısı üçün katı olmak zorunda')">Aktifleştir</a>
+                                            <a href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.ProductID" class="btn btn-outline-success" onclick="return confirm('Günün fırsatlarına eklemek istediğinize emin misiniz?\nUnutmayın, fırsat sayısı üçün katı olmak zorunda')">Aktifleştir</a>
                                         }
                                     </td>
                                 </tr>
