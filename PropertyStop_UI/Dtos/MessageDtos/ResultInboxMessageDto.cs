@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PropertyStop.Dtos.MessagesDtos
+﻿namespace PropertyStop_UI.Dtos.MessageDtos
 {
     public class ResultInboxMessageDto
     {
@@ -10,6 +8,6 @@ namespace PropertyStop.Dtos.MessagesDtos
         public string Detail { get; set; }
         public DateTime SendDate { get; set; }
         public bool IsRead { get; set; }
-        public string UserImageURL { get; set; }
+        public string UserImageURL{ get; set; }
     }
 }
