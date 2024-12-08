@@ -10,6 +10,7 @@ using PropertyStop.Repositories.EmployeeRepositories;
 using PropertyStop.Repositories.EstateAgentRepositories.DashboardRepositories.ChartRepositories;
 using PropertyStop.Repositories.EstateAgentRepositories.DashboardRepositories.LastProductsRepositories;
 using PropertyStop.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticsRepositories;
+using PropertyStop.Repositories.MessageRepositories;
 using PropertyStop.Repositories.PopularLocationRepositories;
 using PropertyStop.Repositories.ProductRepository;
 using PropertyStop.Repositories.ServiceRepository;
@@ -37,6 +38,7 @@ builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 builder.Services.AddTransient<IStatisticRepository, StatisticRepository>();
 builder.Services.AddTransient<IChartRepository, ChartRepository>();
 builder.Services.AddTransient<ILast5ProductRepository, Last5ProductRepository>();
+builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 
 builder.Services.AddCors(opt =>
 {

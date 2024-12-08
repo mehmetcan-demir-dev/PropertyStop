@@ -20,7 +20,7 @@ namespace PropertyStop_UI.ViewComponents.EstateAgent
         {
             var id = _loginService.GetUserID;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44324/api/EstateAgentLastProducts?id=2"+id);
+            var responseMessage = await client.GetAsync("https://localhost:44324/api/EstateAgentLastProducts?id="+id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
