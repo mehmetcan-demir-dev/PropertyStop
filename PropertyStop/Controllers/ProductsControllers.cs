@@ -46,10 +46,16 @@ namespace PropertyStop.Controllers
             var values = await _productRepository.GetLast5ProductAsync();
             return Ok(values);
         }
-        [HttpGet("ProductListingsByEmployee")]
-        public async Task<IActionResult> ProductListingsByEmployee(int id)
+        [HttpGet("ProductListingsByEmployeeByTrue")]
+        public async Task<IActionResult> ProductListingsByEmployeeByTrue(int id)
         {
-            var values = await _productRepository.GetProductListingByEmployeeAsync(id);
+            var values = await _productRepository.GetProductListingByEmployeeAsyncByTrue(id);
+            return Ok(values);
+        }
+        [HttpGet("ProductListingsByEmployeeByFalse")]
+        public async Task<IActionResult> ProductListingsByEmployeeByFalse(int id)
+        {
+            var values = await _productRepository.GetProductListingByEmployeeAsyncByFalse(id);
             return Ok(values);
         }
     }

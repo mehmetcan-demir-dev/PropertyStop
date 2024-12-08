@@ -8,7 +8,9 @@ namespace PropertyStop.Repositories.ProductRepository
     {
         Task<List<ResultProductDto>> GetAllProductAsync();
 
-        Task<List<ResultProductListingWithCategoryByEmployeeDto>> GetProductListingByEmployeeAsync(int id);
+        Task<List<ResultProductListingWithCategoryByEmployeeDto>> GetProductListingByEmployeeAsyncByTrue(int id);
+
+        Task<List<ResultProductListingWithCategoryByEmployeeDto>> GetProductListingByEmployeeAsyncByFalse(int id);
 
         Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync();
 

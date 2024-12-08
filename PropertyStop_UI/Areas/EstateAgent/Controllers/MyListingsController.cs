@@ -16,11 +16,24 @@ namespace PropertyStop_UI.Areas.EstateAgent.Controllers
             _loginService = loginService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ActiveListings()
         {
             var id = _loginService.GetUserID;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:44324/api/ProductsControllers/ProductListingsByEmployee?id=" + id);
+            var responseMessage = await client.GetAsync("https://localhost:44324/api/ProductsControllers/ProductListingsByEmployeeByTrue?id=" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductListingWithCategoryByEmployeeDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+        public async Task<IActionResult> PassiveListings()
+        {
+            var id = _loginService.GetUserID;
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44324/api/ProductsControllers/ProductListingsByEmployeeByFalse?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
