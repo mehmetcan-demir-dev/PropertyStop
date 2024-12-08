@@ -65,5 +65,11 @@ namespace PropertyStop.Controllers
             await _productRepository.CreateProduct(createProductDto);
             return Ok("İşlem Başarılı.");
         }
+        [HttpGet("GetProductByProductID")]
+        public async Task<IActionResult> GetProductByProductID(int id)
+        {
+            var values = await _productRepository.GetProductByProductID(id);
+            return Ok(values);
+        }
     }
 }

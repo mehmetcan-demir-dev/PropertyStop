@@ -1,4 +1,5 @@
-﻿using PropertyStop.Dtos.ProductDtos;
+﻿using PropertyStop.Dtos.ProductDetailDtos;
+using PropertyStop.Dtos.ProductDtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,12 +15,15 @@ namespace PropertyStop.Repositories.ProductRepository
 
         Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync();
 
-        void ProductDealOfTheDayStatusChangeToTrue(int id);
+        Task ProductDealOfTheDayStatusChangeToTrue(int id);
 
-        void ProductDealOfTheDayStatusChangeToFalse(int id);
+        Task ProductDealOfTheDayStatusChangeToFalse(int id);
 
         Task<List<ResultLast5ProductsWithCategory>> GetLast5ProductAsync();
 
         Task CreateProduct(CreateProductDto createProductDto);
+
+        Task<GetProductByProductIDDto> GetProductByProductID(int id);
+        Task<GetProductDetailByIDDto> GetProductDetailByProductID(int id);
     }
 }
