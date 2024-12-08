@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PropertyStop_UI.Dtos.ProductDtos;
+using PropertyStop_UI.Services;
 
 namespace PropertyStop_UI.Areas.EstateAgent.Controllers
 {
@@ -8,15 +9,16 @@ namespace PropertyStop_UI.Areas.EstateAgent.Controllers
     public class MyListingsController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
-        public MyListingsController(IHttpClientFactory httpClientFactory)
+        private readonly ILoginService _loginService;
+        public MyListingsController(IHttpClientFactory httpClientFactory, ILoginService loginService)
         {
             _httpClientFactory = httpClientFactory;
+            _loginService = loginService;
         }
 
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index()
         {
-            id = 1;
+            var id = _loginService.GetUserID;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44324/api/ProductsControllers/ProductListingsByEmployee?id=" + id);
             if (responseMessage.IsSuccessStatusCode)

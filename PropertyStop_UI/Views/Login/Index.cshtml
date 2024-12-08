@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PropertyStop_UI.Dtos.LoginDtos.CreateLoginDto
+@{
     Layout = null;
 }
 
@@ -56,11 +57,11 @@
                         </div>
                         <form method="post">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="emlakduragi">
+                                <input type="text" class="form-control" id="floatingInput" asp-for="Username" placeholder="emlakduragi">
                                 <label for="floatingInput">Kullanıcı Adı</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="EmlakD11">
+                                <input type="password" class="form-control" id="floatingPassword" asp-for="Password" placeholder="EmlakD11">
                                 <label for="floatingPassword">Şifre</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -70,8 +71,8 @@
                                 </div>
                                 <a href="">Şifremi Unuttum</a>
                             </div>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Giriş Yap</button>
                         </form>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Giriş Yap</button>
                         <p class="text-center mb-0">Üye değil misiniz?<a href="">Kayıt Ol</a></p>
                     </div>
                 </div>

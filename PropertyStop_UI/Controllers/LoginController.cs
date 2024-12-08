@@ -53,7 +53,7 @@ namespace PropertyStop_UI.Controllers
                             IsPersistent = true
                         };
                         await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                        return RedirectToAction("Index", "MyListings");
+                        return RedirectToAction("Index", "Employee");
                     }
                 }
             }
