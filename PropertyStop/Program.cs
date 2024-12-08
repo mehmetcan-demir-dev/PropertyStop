@@ -8,6 +8,7 @@ using PropertyStop.Repositories.CategoryRepository;
 using PropertyStop.Repositories.ContactRepositories;
 using PropertyStop.Repositories.EmployeeRepositories;
 using PropertyStop.Repositories.EstateAgentRepositories.DashboardRepositories.ChartRepositories;
+using PropertyStop.Repositories.EstateAgentRepositories.DashboardRepositories.LastProductsRepositories;
 using PropertyStop.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticsRepositories;
 using PropertyStop.Repositories.PopularLocationRepositories;
 using PropertyStop.Repositories.ProductRepository;
@@ -24,7 +25,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<Context>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
-
 builder.Services.AddTransient<IWhoWeAreDetailRepository, WhoWeAreDetailRepository>();
 builder.Services.AddTransient<IServiceRepository, ServiceRepository>();
 builder.Services.AddTransient<IBottomGridRepository, BottomGridRepository>();
@@ -36,6 +36,7 @@ builder.Services.AddTransient<IContactRepository, ContactRepository>();
 builder.Services.AddTransient<IToDoListRepository, ToDoListRepository>();
 builder.Services.AddTransient<IStatisticRepository, StatisticRepository>();
 builder.Services.AddTransient<IChartRepository, ChartRepository>();
+builder.Services.AddTransient<ILast5ProductRepository, Last5ProductRepository>();
 
 builder.Services.AddCors(opt =>
 {
@@ -47,6 +48,7 @@ builder.Services.AddCors(opt =>
         .AllowCredentials();
     });
 });
+
 builder.Services.AddHttpClient();
 builder.Services.AddSignalR();
 
