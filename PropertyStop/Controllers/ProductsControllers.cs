@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PropertyStop.Dtos.ProductDtos;
 using PropertyStop.Repositories.ProductRepository;
 using System.Threading.Tasks;
 
@@ -57,6 +58,12 @@ namespace PropertyStop.Controllers
         {
             var values = await _productRepository.GetProductListingByEmployeeAsyncByFalse(id);
             return Ok(values);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
+        {
+            await _productRepository.CreateProduct(createProductDto);
+            return Ok("İşlem Başarılı.");
         }
     }
 }

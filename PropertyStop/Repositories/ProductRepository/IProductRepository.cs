@@ -19,5 +19,7 @@ namespace PropertyStop.Repositories.ProductRepository
         void ProductDealOfTheDayStatusChangeToFalse(int id);
 
         Task<List<ResultLast5ProductsWithCategory>> GetLast5ProductAsync();
+
+        Task CreateProduct(CreateProductDto createProductDto);
     }
 }
