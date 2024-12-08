@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using PropertyStop_UI.Dtos.CategoryDtos;
 using PropertyStop_UI.Dtos.ProductDtos;
 using PropertyStop_UI.Services;
+using System.Text;
 
 namespace PropertyStop_UI.Areas.EstateAgent.Controllers
 {
@@ -63,8 +64,21 @@ namespace PropertyStop_UI.Areas.EstateAgent.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateListings(string d)
+        public async Task<IActionResult> CreateListings(CreateProductDto createProductDto)
         {
+            createProductDto.DealOfTheDay = false;
+            createProductDto.ProductDate = DateTime.Now;
+            createProductDto.ProductStatus = true;
+            var id = _loginService.GetUserID;
+            createProductDto.EmployeeID = int.Parse(id) ;
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createProductDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("https://localhost:44324/api/ProductsControllers", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }
