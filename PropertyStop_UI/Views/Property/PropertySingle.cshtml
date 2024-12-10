@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "PropertySingle";
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+
+    Random random = new Random();
+    int viewCount = random.Next(0, 251); // 0 ile 250 arasında rastgele sayı
 }
 <section class="w3l-about-breadcrumb">
     <div class="breadcrumb-bg breadcrumb-bg-about pt-5">
@@ -11,7 +14,7 @@
 <section class="w3l-breadcrumb">
     <div class="container">
         <ul class="breadcrumbs-custom-path">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="/Default/Index">Anasayfa</a></li>
             <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> Property</li>
             <li class="active"><span class="fa fa-angle-right mx-2" aria-hidden="true"></span> property single</li>
         </ul>
@@ -37,8 +40,9 @@
                     </div>
 
                 </li>
-                <li><span class="fa fa-clock-o"></span> 5 months ago</li>
-                <li><span class="fa fa-eye"></span> 250 views</li>
+                <li><span class="fa fa-clock-o"></span> @ViewBag.DateDiff </li>
+
+                <li><span class="fa fa-eye"></span> @viewCount Görüntülenme</li>
             </ul>
         </div>
         <div class="post-content">

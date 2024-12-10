@@ -1,4 +1,6 @@
-﻿namespace PropertyStop.Dtos.ProductDetailDtos
+﻿using System;
+
+namespace PropertyStop.Dtos.ProductDetailDtos
 {
     public class GetProductDetailByIDDto
     {
@@ -12,5 +14,7 @@
         public string Location { get; set; }
         public string VideoUrl { get; set; }
         public int ProductID { get; set; }
+
+        public DateTime ProductDate { get; set; }
     }
 }

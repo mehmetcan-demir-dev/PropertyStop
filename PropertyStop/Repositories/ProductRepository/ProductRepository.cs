@@ -74,7 +74,7 @@ namespace PropertyStop.Repositories.ProductRepository
 
         public async Task<GetProductByProductIDDto> GetProductByProductID(int id)
         {
-            string query = "Select ProductID, Title, Price, City, District, CategoryName,CoverImage,Type,Address, DealOfTheDay " +
+            string query = "Select ProductID, Title, Price, City, District, CategoryName,CoverImage,Type,Address, DealOfTheDay, ProductDate " +
                 "from Product inner join Category on Product.ProductCategory=Category.CategoryID where ProductID= @productID";
             var parameters = new DynamicParameters();
             parameters.Add("@productID", id);

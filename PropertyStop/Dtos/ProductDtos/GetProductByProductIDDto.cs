@@ -1,4 +1,6 @@
-﻿namespace PropertyStop.Dtos.ProductDtos
+﻿using System;
+
+namespace PropertyStop.Dtos.ProductDtos
 {
     public class GetProductByProductIDDto
     {
@@ -12,5 +14,6 @@
         public string Type { get; set; }
         public string Address { get; set; }
         public bool DealOfTheDay { get; set; }
+        public DateTime ProductDate { get; set; }
     }
 }

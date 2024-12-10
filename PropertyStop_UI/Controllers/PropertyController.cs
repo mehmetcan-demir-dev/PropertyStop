@@ -54,7 +54,43 @@ namespace PropertyStop_UI.Controllers
             ViewBag.BedroomCount = values2.bedRoomCount;
             ViewBag.ProductSize = values2.productSize;
 
+            // İLANIN NE KADAR ZAMAN ÖNCE VERİLDİĞİNİ GÖSTERİR.
+            // o günün üzerinden kaç yıl ay gün geçmiş şeklinde gösterir
+            // bir ilan 13 yıl 18 gün önce ilana koyulduysa 13 yıl 0 ay 18 gün olarak göstermez.
+            ViewBag.DateDiff = new Func<string>(() =>
+            {
+                DateTime productDate = values1.ProductDate;
+                DateTime today = DateTime.Now;
 
+                int totalYears = today.Year - productDate.Year;
+                int totalMonths = today.Month - productDate.Month;
+                int totalDays = today.Day - productDate.Day;
+
+                if (totalMonths < 0)
+                {
+                    totalYears--;
+                    totalMonths += 12;
+                }
+
+                if (totalDays < 0)
+                {
+                    totalMonths--;
+                    totalDays += DateTime.DaysInMonth(today.AddMonths(-1).Year, today.AddMonths(-1).Month);
+
+                    if (totalMonths < 0)
+                    {
+                        totalYears--;
+                        totalMonths += 12;
+                    }
+                }
+
+                string dateDiffMessage = "";
+                if (totalYears > 0) dateDiffMessage += $"{totalYears} yıl ";
+                if (totalMonths > 0) dateDiffMessage += $"{totalMonths} ay ";
+                if (totalDays > 0) dateDiffMessage += $"{totalDays} gün ";
+
+                return dateDiffMessage + "önce ilana kondu.";
+            })();
 
             return View();
         }
