@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PropertyStop.Hubs;
 using PropertyStop.Models.DapperContext;
+using PropertyStop.Repositories.AppUserRepositories;
 using PropertyStop.Repositories.BottomGridRepositories;
 using PropertyStop.Repositories.CategoryRepository;
 using PropertyStop.Repositories.ContactRepositories;
@@ -12,6 +13,7 @@ using PropertyStop.Repositories.EstateAgentRepositories.DashboardRepositories.La
 using PropertyStop.Repositories.EstateAgentRepositories.DashboardRepositories.StatisticsRepositories;
 using PropertyStop.Repositories.MessageRepositories;
 using PropertyStop.Repositories.PopularLocationRepositories;
+using PropertyStop.Repositories.ProductImageRepositories;
 using PropertyStop.Repositories.ProductRepository;
 using PropertyStop.Repositories.ServiceRepository;
 using PropertyStop.Repositories.StatisticsRepositories;
@@ -39,6 +41,8 @@ builder.Services.AddTransient<IStatisticRepository, StatisticRepository>();
 builder.Services.AddTransient<IChartRepository, ChartRepository>();
 builder.Services.AddTransient<ILast5ProductRepository, Last5ProductRepository>();
 builder.Services.AddTransient<IMessageRepository, MessageRepository>();
+builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
+builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
 
 builder.Services.AddCors(opt =>
 {

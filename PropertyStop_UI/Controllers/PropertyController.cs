@@ -43,9 +43,9 @@ namespace PropertyStop_UI.Controllers
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
             var values2 = JsonConvert.DeserializeObject<GetProductDetailByIDDto>(jsonData2);
 
-
             ViewBag.Title1 = values1.Title.ToString();
             ViewBag.Price = values1.Price;
+            ViewBag.productID = values1.ProductID;
             ViewBag.City = values1.City;
             ViewBag.District = values1.District;
             ViewBag.Address = values1.Address;
@@ -53,6 +53,9 @@ namespace PropertyStop_UI.Controllers
             ViewBag.BathCount = values2.bathCount;
             ViewBag.BedroomCount = values2.bedRoomCount;
             ViewBag.ProductSize = values2.productSize;
+            ViewBag.description = values1.description;
+            ViewBag.BuildYear = values2.buildYear;
+            ViewBag.Date = values2.ProductDate;
 
             // İLANIN NE KADAR ZAMAN ÖNCE VERİLDİĞİNİ GÖSTERİR.
             // o günün üzerinden kaç yıl ay gün geçmiş şeklinde gösterir
@@ -89,7 +92,7 @@ namespace PropertyStop_UI.Controllers
                 if (totalMonths > 0) dateDiffMessage += $"{totalMonths} ay ";
                 if (totalDays > 0) dateDiffMessage += $"{totalDays} gün ";
 
-                return dateDiffMessage + "önce ilana kondu.";
+                return dateDiffMessage;
             })();
 
             return View();
