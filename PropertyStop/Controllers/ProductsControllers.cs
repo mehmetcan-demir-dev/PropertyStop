@@ -71,5 +71,11 @@ namespace PropertyStop.Controllers
             var values = await _productRepository.GetProductByProductID(id);
             return Ok(values);
         }
+        [HttpGet("ResultPropertyWithSearchList")]
+        public async Task<IActionResult> ResultProductWithSearchList(string searchKeyValue, int propertyCategoryID, string city)
+        {
+            var values = await _productRepository.ResultPropertyWithSearchList(searchKeyValue, propertyCategoryID, city);
+            return Ok(values);
+        }
     }
 }

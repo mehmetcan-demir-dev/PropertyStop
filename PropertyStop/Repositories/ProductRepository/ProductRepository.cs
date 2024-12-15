@@ -142,5 +142,19 @@ namespace PropertyStop.Repositories.ProductRepository
                 await connection.ExecuteAsync(query, parameters);
             }
         }
+
+        public async Task<List<ResultPropertyWithSearchListDto>> ResultPropertyWithSearchList(string searchKeyValue, int propertyCategoryID, string city)
+        {
+            string query = "select * from Product where Title like '%" + searchKeyValue + "%' And ProductCategory=@propertyCategoryID And City=@city";
+            var parameters = new DynamicParameters();
+            //parameters.Add("@searchKeyValue", searchKeyValue);
+            parameters.Add("@propertyCategoryID", propertyCategoryID);
+            parameters.Add("@city", city);
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultPropertyWithSearchListDto>(query, parameters);
+                return values.ToList();
+            }
+        }
     }
 }

@@ -26,6 +26,24 @@ namespace PropertyStop_UI.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> PropertyListWithSearch(string searchKeyValue, int propertyCategoryID, string city)
+        {
+            searchKeyValue = TempData["searchKeyValue"].ToString();
+            propertyCategoryID = int.Parse(TempData["propertyCategoryID"].ToString());
+            city = TempData["city"].ToString();
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:44324/api/ProductsControllers/ResultPropertyWithSearchList?searchKeyValue={searchKeyValue}&propertyCategoryID={propertyCategoryID}&city={city}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithSearchListDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+
+        }
+
         [HttpGet]
         public async Task<IActionResult> PropertySingle(int id)
         {
@@ -50,13 +68,15 @@ namespace PropertyStop_UI.Controllers
             ViewBag.District = values1.District;
             ViewBag.Address = values1.Address;
             ViewBag.Type = values1.Type;
+            ViewBag.description = values1.description;
+
             ViewBag.BathCount = values2.bathCount;
             ViewBag.BedroomCount = values2.bedRoomCount;
             ViewBag.ProductSize = values2.productSize;
-            ViewBag.description = values1.description;
             ViewBag.BuildYear = values2.buildYear;
             ViewBag.Date = values2.ProductDate;
-
+            ViewBag.location = values2.location;
+            ViewBag.videoUrl = values2.videoUrl;
             // İLANIN NE KADAR ZAMAN ÖNCE VERİLDİĞİNİ GÖSTERİR.
             // o günün üzerinden kaç yıl ay gün geçmiş şeklinde gösterir
             // bir ilan 13 yıl 18 gün önce ilana koyulduysa 13 yıl 0 ay 18 gün olarak göstermez.

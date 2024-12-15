@@ -25,5 +25,6 @@ namespace PropertyStop.Repositories.ProductRepository
 
         Task<GetProductByProductIDDto> GetProductByProductID(int id);
         Task<GetProductDetailByIDDto> GetProductDetailByProductID(int id);
+        Task<List<ResultPropertyWithSearchListDto>> ResultPropertyWithSearchList(string searchKeyValue, int propertyCategoryID, string city);
     }
 }
