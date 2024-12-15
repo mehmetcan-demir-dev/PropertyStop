@@ -72,6 +72,17 @@ namespace PropertyStop.Repositories.ProductRepository
             }
         }
 
+        public async Task<List<ResultProductWithCategoryDto>> GetProductByDealOfTheDayIsTrueWithCategoryAsync()
+        {
+            string query = "Select ProductID, Title, Price, City, District, CategoryName,CoverImage,Type,Address, DealOfTheDay from Product inner join " +
+                "Category on Product.ProductCategory=Category.CategoryID where DealOfTheDay=1";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
+                return values.ToList();
+            }
+        }
+
         public async Task<GetProductByProductIDDto> GetProductByProductID(int id)
         {
             string query = "Select ProductID, Title, Price, City, District, CategoryName,CoverImage,Type,Address, DealOfTheDay, ProductDate, Description " +
