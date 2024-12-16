@@ -18,6 +18,7 @@ using PropertyStop.Repositories.ProductRepository;
 using PropertyStop.Repositories.PropertyAmenityRepositories;
 using PropertyStop.Repositories.ServiceRepository;
 using PropertyStop.Repositories.StatisticsRepositories;
+using PropertyStop.Repositories.SubFeatureRepositories;
 using PropertyStop.Repositories.TestimonialRepositories;
 using PropertyStop.Repositories.ToDoListRepositories;
 using PropertyStop.Repositories.WhoWeAreRepository;
@@ -45,6 +46,7 @@ builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 builder.Services.AddTransient<IProductImageRepository, ProductImageRepository>();
 builder.Services.AddTransient<IAppUserRepository, AppUserRepository>();
 builder.Services.AddTransient<IPropertyAmenityRepository, PropertyAmenityRepository>();
+builder.Services.AddTransient<ISubFeatureRepository, SubFeatureRepository>();
 
 builder.Services.AddCors(opt =>
 {
