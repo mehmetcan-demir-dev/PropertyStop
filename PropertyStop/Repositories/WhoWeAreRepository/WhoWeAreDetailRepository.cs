@@ -15,7 +15,7 @@ namespace PropertyStop.Repositories.WhoWeAreRepository
         {   
             _context = context;
         }
-        public async void CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
+        public async Task CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
         {
             string query = "insert into WhoWeAreDetail (Title, Subtitle, Description1, Description2) values (@title, @subtitle, @description1, @description2)";
             var parameters = new DynamicParameters();
@@ -29,7 +29,7 @@ namespace PropertyStop.Repositories.WhoWeAreRepository
             } 
         }
 
-        public async void DeleteWhoWeAreDetail(int id)
+        public async Task DeleteWhoWeAreDetail(int id)
         {
             string query = "delete from WhoWeAreDetail where WhoWeAreDetailID = @whoWeAreDetailID";
             var parameters = new DynamicParameters();
@@ -46,7 +46,7 @@ namespace PropertyStop.Repositories.WhoWeAreRepository
             throw new System.NotImplementedException();
         }
 
-        public async Task<List<ResultWhoWeAreDetailDto>> GetAllWhoWeAreDetailAsync()
+        public async Task<List<ResultWhoWeAreDetailDto>> GetAllWhoWeAreDetail()
         {
             string query = "Select * from WhoWeAreDetail";
             using (var connection = _context.CreateConnection())
@@ -68,7 +68,7 @@ namespace PropertyStop.Repositories.WhoWeAreRepository
             }
         }
 
-        public async void UpdateWhoWeAreCategory(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
+        public async Task UpdateWhoWeAreCategory(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
         {
             string query = "Update WhoWeAreDetail set Title = @title, Subtitle = @subtitle, Description1=@description1, Description2 = @description2 where WhoWeAreDetailID=@whoWeAreDetailID";
             var parameters = new DynamicParameters();

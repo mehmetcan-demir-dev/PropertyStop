@@ -16,17 +16,17 @@ namespace PropertyStop.Repositories.ContactRepositories
             _context = context;
         }
 
-        public void CreateContact(CreateContactDto ContactDto)
+        public Task CreateContact(CreateContactDto ContactDto)
         {
             throw new System.NotImplementedException();
         }
 
-        public void DeleteContact(int id)
+        public Task DeleteContact(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task<List<ResultContactDto>> GetAllContactAsync()
+        public Task<List<ResultContactDto>> GetAllContact()
         {
             throw new System.NotImplementedException();
         }

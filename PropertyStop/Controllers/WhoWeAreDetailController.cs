@@ -22,25 +22,25 @@ namespace PropertyStop.Controllers
         [HttpGet]
         public async Task<IActionResult> WhoWeAreDetailList()
         {
-            var values = await _whoWeAreDetailRepository.GetAllWhoWeAreDetailAsync();
+            var values = await _whoWeAreDetailRepository.GetAllWhoWeAreDetail();
             return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> CreateWhoWeAreDetail(CreateWhoWeAreDetailDto createWhoWeAreDetailDto)
         {
-            _whoWeAreDetailRepository.CreateWhoWeAreDetail(createWhoWeAreDetailDto);
+            await _whoWeAreDetailRepository.CreateWhoWeAreDetail(createWhoWeAreDetailDto);
             return  Ok("Bilgi Ekleme Başarıyla Tamamlandı.");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteWhoWeAreDetail(int id)
         {   
-            _whoWeAreDetailRepository.DeleteWhoWeAreDetail(id);
+            await _whoWeAreDetailRepository.DeleteWhoWeAreDetail(id);
             return Ok("Bilgi Silme Başarıyla Tamamlandı.");
         }
         [HttpPut]
         public async Task<IActionResult> UpdateWhoWeAreDetail(UpdateWhoWeAreDetailDto updateWhoWeAreDetailDto)
         {
-            _whoWeAreDetailRepository.UpdateWhoWeAreCategory(updateWhoWeAreDetailDto);
+            await _whoWeAreDetailRepository.UpdateWhoWeAreCategory(updateWhoWeAreDetailDto);
             return Ok("Bilgi Güncelleme Başarıyla Tamamlandı");
         }
         [HttpGet("{id}")]

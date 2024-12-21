@@ -19,25 +19,25 @@ namespace PropertyStop.Controllers
         [HttpGet]
         public async Task<IActionResult> ServiceList()
         {
-            var values = await _serviceRepository.GetAllServiceAsync();
+            var values = await _serviceRepository.GetAllService();
             return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> CreateService(CreateServiceDto createServiceDto)
         {
-            _serviceRepository.CreateService(createServiceDto);
+            await _serviceRepository.CreateService(createServiceDto);
             return Ok("Bilgi Ekleme Başarıyla Tamamlandı.");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteService(int id)
         {
-            _serviceRepository.DeleteService(id);
+            await _serviceRepository.DeleteService(id);
             return Ok("Bilgi Silme Başarıyla Tamamlandı.");
         }
         [HttpPut]
         public async Task<IActionResult> UpdateService(UpdateServiceDto updateServiceDto)
         {
-            _serviceRepository.UpdateService(updateServiceDto);
+            await _serviceRepository.UpdateService(updateServiceDto);
             return Ok("Bilgi Güncelleme Başarıyla Tamamlandı");
         }
         [HttpGet("{id}")]

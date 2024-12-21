@@ -15,7 +15,7 @@ namespace PropertyStop.Repositories.EmployeeRepositories
         {
             _context = context;
         }
-        public async void CreateEmployee(CreateEmployeeDto createEmployeeDto)
+        public async Task CreateEmployee(CreateEmployeeDto createEmployeeDto)
         {
             string query = "insert into Employee (Name, Title, Mail, PhoneNumber, ImageUrl, Status) values (@name, @title, @mail, @phonenumber, @imageurl, @status)";
             var parameters = new DynamicParameters();
@@ -31,7 +31,7 @@ namespace PropertyStop.Repositories.EmployeeRepositories
             }
         }
 
-        public async void DeleteEmployee(int id)
+        public async Task DeleteEmployee(int id)
         {
             string query = "delete from employee where EmployeeID = @employeeID";
             var parameters = new DynamicParameters();
@@ -42,7 +42,7 @@ namespace PropertyStop.Repositories.EmployeeRepositories
             }
         }
 
-        public async Task<List<ResultEmployeeDto>> GetAllEmployeeAsync()
+        public async Task<List<ResultEmployeeDto>> GetAllEmployee()
         {
             string query = "Select * from Employee";
             using (var connection = _context.CreateConnection())
@@ -64,7 +64,7 @@ namespace PropertyStop.Repositories.EmployeeRepositories
             }
         }
 
-        public async void UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
+        public async Task UpdateEmployee(UpdateEmployeeDto updateEmployeeDto)
         {
             string query = "update Employee set Name=@name, Title=@title, Mail=@mail, PhoneNumber=@phonenumber, " +
                 "ImageUrl=@imageurl, Status=@status where EmployeeID=@employeeID";

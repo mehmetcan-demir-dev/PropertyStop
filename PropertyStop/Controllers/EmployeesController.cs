@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using PropertyStop.Dtos.CategoryDtos;
+﻿using Microsoft.AspNetCore.Mvc;
 using PropertyStop.Dtos.EmployeeDtos;
-using PropertyStop.Repositories.CategoryRepository;
 using PropertyStop.Repositories.EmployeeRepositories;
 using System.Threading.Tasks;
 
@@ -21,25 +18,25 @@ namespace PropertyStop.Controllers
         [HttpGet]
         public async Task<IActionResult> EmployeeList()
         {
-            var values = await _employeeRepository.GetAllEmployeeAsync();
+            var values = await _employeeRepository.GetAllEmployee();
             return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateEmployeeDto createEmployeeDto)
         {
-            _employeeRepository.CreateEmployee(createEmployeeDto);
+            await _employeeRepository.CreateEmployee(createEmployeeDto);
             return Ok("Personel Ekleme Başarıyla Tamamlandı.");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            _employeeRepository.DeleteEmployee(id);
+            await _employeeRepository.DeleteEmployee(id);
             return Ok("Personel Silme Başarıyla Tamamlandı.");
         }
         [HttpPut]
         public async Task<IActionResult> UpdateCategory(UpdateEmployeeDto updateEmployeeDto)
         {
-            _employeeRepository.UpdateEmployee(updateEmployeeDto);
+            await _employeeRepository.UpdateEmployee(updateEmployeeDto);
             return Ok("Personel Güncelleme Başarıyla Tamamlandı");
         }
         [HttpGet("{id}")]

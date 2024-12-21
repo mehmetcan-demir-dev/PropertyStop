@@ -18,25 +18,25 @@ namespace PropertyStop.Controllers
         [HttpGet]
         public async Task<IActionResult> PopularLocationList()
         {
-            var value = await _popularLocationRepository.GetAllPopularLocationAsync();
+            var value = await _popularLocationRepository.GetAllPopularLocation();
             return Ok(value);  
         }
         [HttpPost]
         public async Task<IActionResult> CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
         {
-            _popularLocationRepository.CreatePopularLocation(createPopularLocationDto);
+            await _popularLocationRepository.CreatePopularLocation(createPopularLocationDto);
             return Ok("Bilgi Ekleme Başarıyla Tamamlandı.");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePopularLocation(int id)
         {
-            _popularLocationRepository.DeletePopularLocation(id);
+            await _popularLocationRepository.DeletePopularLocation(id);
             return Ok("Bilgi Silme Başarıyla Tamamlandı.");
         }
         [HttpPut]
         public async Task<IActionResult> UpdatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto)
         {
-            _popularLocationRepository.UpdatePopularLocation(updatePopularLocationDto);
+            await _popularLocationRepository.UpdatePopularLocation(updatePopularLocationDto);
             return Ok("Bilgi Güncelleme Başarıyla Tamamlandı");
         }
         [HttpGet("{id}")]

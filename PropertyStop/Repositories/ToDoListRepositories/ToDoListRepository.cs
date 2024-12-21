@@ -14,17 +14,17 @@ namespace PropertyStop.Repositories.ToDoListRepositories
         {
             _context = context;
         }
-        public void CreateToDoList(CreateToDoListDto toDoListDto)
+        public Task CreateToDoList(CreateToDoListDto toDoListDto)
         {
             throw new System.NotImplementedException();
         }
 
-        public void DeleteCategory(int id)
+        public Task DeleteCategory(int id)
         {
             throw new System.NotImplementedException();
         }
 
-        public async Task<List<ResultToDoListDto>> GetAllToDoListAsync()
+        public async Task<List<ResultToDoListDto>> GetAllToDoList()
         {
             string query = "Select * from ToDoList";
             using (var connection = _context.CreateConnection())
@@ -39,7 +39,7 @@ namespace PropertyStop.Repositories.ToDoListRepositories
             throw new System.NotImplementedException();
         }
 
-        public void UpdateCategory(UpdateToDoListDto toDoListDto)
+        public Task UpdateCategory(UpdateToDoListDto toDoListDto)
         {
             throw new System.NotImplementedException();
         }

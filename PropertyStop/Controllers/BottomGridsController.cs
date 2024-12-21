@@ -19,25 +19,25 @@ namespace PropertyStop.Controllers
         [HttpGet]
         public async Task<IActionResult> BottomGridList()
         {
-            var values = await _bottomGridRepository.GetAllBottomGridAsync();
+            var values = await _bottomGridRepository.GetAllBottomGrid();
             return Ok(values);
         }
         [HttpPost]
         public async Task<IActionResult> CreateBottomGrid(CreateBottomGridDto createBottomGridDto)
         {
-            _bottomGridRepository.CreateBottomGrid(createBottomGridDto);
+            await _bottomGridRepository.CreateBottomGrid(createBottomGridDto);
             return Ok("Bilgi Ekleme Başarıyla Tamamlandı.");
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBottomGrid(int id)
         {
-            _bottomGridRepository.DeleteBottomGrid(id);
+            await _bottomGridRepository.DeleteBottomGrid(id);
             return Ok("Bilgi Silme Başarıyla Tamamlandı.");
         }
         [HttpPut]
         public async Task<IActionResult> UpdateBottomGrid(UpdateBottomGridDto updateBottomGridDto)
         {
-            _bottomGridRepository.UpdateBottomGrid(updateBottomGridDto);
+            await _bottomGridRepository.UpdateBottomGrid(updateBottomGridDto);
             return Ok("Bilgi Güncelleme Başarıyla Tamamlandı");
         }
         [HttpGet("{id}")]

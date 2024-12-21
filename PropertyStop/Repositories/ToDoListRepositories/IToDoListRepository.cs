@@ -6,10 +6,10 @@ namespace PropertyStop.Repositories.ToDoListRepositories
 {
     public interface IToDoListRepository
     {
-        Task<List<ResultToDoListDto>> GetAllToDoListAsync();
-        void CreateToDoList(CreateToDoListDto toDoListDto);
-        void DeleteCategory(int id);
-        void UpdateCategory(UpdateToDoListDto toDoListDto);
+        Task<List<ResultToDoListDto>> GetAllToDoList();
+        Task CreateToDoList(CreateToDoListDto toDoListDto);
+        Task DeleteCategory(int id);
+        Task UpdateCategory(UpdateToDoListDto toDoListDto);
         Task<GetByIDToDoListDto> GetToDoList(int id);
     }
 }

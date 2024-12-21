@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using PropertyStop.Dtos.PopularLocationDtos;
-using PropertyStop.Dtos.ServiceDtos;
 using PropertyStop.Models.DapperContext;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +15,7 @@ namespace PropertyStop.Repositories.PopularLocationRepositories
             _context = context;
         }
 
-        public async void CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
+        public async Task CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
         {
             string query = "insert into PopularLocation (CityName, ImageUrl) values (@cityName, @imageUrl)";
             var parameters = new DynamicParameters();
@@ -28,7 +27,7 @@ namespace PropertyStop.Repositories.PopularLocationRepositories
             }
         }
 
-        public async void DeletePopularLocation(int id)
+        public async Task DeletePopularLocation(int id)
         {
             string query = "delete from PopularLocation where LocationID = @locationID";
             var parameters = new DynamicParameters();
@@ -39,7 +38,7 @@ namespace PropertyStop.Repositories.PopularLocationRepositories
             }
         }
 
-        public async Task<List<ResultPopularLocationDto>> GetAllPopularLocationAsync()
+        public async Task<List<ResultPopularLocationDto>> GetAllPopularLocation()
         {
             string query = "Select * from PopularLocation";
             using (var connection = _context.CreateConnection())
@@ -61,7 +60,7 @@ namespace PropertyStop.Repositories.PopularLocationRepositories
             }
         }
 
-        public async void UpdatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto)
+        public async Task UpdatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto)
         {
             string query = "Update PopularLocation set CityName = @cityName, ImageUrl= @imageUrl where LocationID=@locationID";
             var parameters = new DynamicParameters();

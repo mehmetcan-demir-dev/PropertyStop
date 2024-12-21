@@ -6,10 +6,10 @@ namespace PropertyStop.Repositories.ContactRepositories
 {
     public interface IContactRepository
     {
-        Task<List<ResultContactDto>> GetAllContactAsync();
+        Task<List<ResultContactDto>> GetAllContact();
         Task<List<Last4ContactsResultDto>> GetLast4Contacts();
-        void CreateContact(CreateContactDto ContactDto);
-        void DeleteContact(int id);
+        Task CreateContact(CreateContactDto ContactDto);
+        Task DeleteContact(int id);
         Task<GetByIDContactDto> GetContact(int id);
     }
 }
